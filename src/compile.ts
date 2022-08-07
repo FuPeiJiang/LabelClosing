@@ -9,7 +9,7 @@ var grammar = {
         "^(\\/\\*)([^\\n][\\s\\n]*)*(\\*\\/)$",
         `
           if (/*debug*/ false)
-            console.log("multi_comment_open: ", yytext); 
+            console.log("multi_comment_open: ", yytext);
           return 'MULTICOMMENTOPEN';
         `
       ],
@@ -17,14 +17,14 @@ var grammar = {
       //   "\\*\\/",
       //   `
       //     if (yy.debug)
-      //       console.log("multi_comment_close: ", yytext); 
+      //       console.log("multi_comment_close: ", yytext);
       //     return 'MULTICOMMENTEND'; `
       // ],
       [
         "^(\\/\\/)[^\\n]+\\n$",
         `
-          if (/*debug*/ false)          
-            console.log("comment: ", yytext); 
+          if (/*debug*/ false)
+            console.log("comment: ", yytext);
           return 'COMMENT';
         `
       ],
@@ -32,7 +32,7 @@ var grammar = {
         "[^\\n\\]\\}]*[\\n\\s]*\\{",
         `
           if (/*debug*/ false)
-            console.log("block_open: ", yytext); 
+            console.log("block_open: ", yytext);
           return 'BLOCKOPEN';
         `
       ],
@@ -40,28 +40,28 @@ var grammar = {
         "[^\\n\\]\\}]*[\\n\\s]*\\[",
         `
           if (/*debug*/ false)
-            console.log("square_bracket_open: ", yytext); 
+            console.log("square_bracket_open: ", yytext);
           return 'SQUBRAOPEN';`
       ],
       [
         "\\}",
         `
           if (/*debug*/ false)
-            console.log("block_end: ", yytext); 
+            console.log("block_end: ", yytext);
           return 'BLOCKEND';`
       ],
       [
         "\\]",
         `
           if (/*debug*/ false)
-            console.log("square_bracket_end: ", yytext); 
+            console.log("square_bracket_end: ", yytext);
           return 'SQUBRAEND';`
       ],
       // [
       //   "([^\\[\\]\\{\\}\\r\\f\\n\\t])+",
       //   `
       //     if (/*debug*/ false)
-      //       console.log("other_line: ", yytext); 
+      //       console.log("other_line: ", yytext);
       //     return 'OTHER';
       //   `
       // ],
@@ -69,7 +69,7 @@ var grammar = {
         "[^\\n\\]\\}]*[\\s\\n\\r\\f]*",
         `
           if (/*debug*/ false)
-            console.log("other_line: ", yytext); 
+            console.log("other_line: ", yytext);
           return 'OTHER';
         `
       ],
@@ -105,7 +105,7 @@ var grammar = {
             line: @3.first_line -1,
             column: @3.first_column,
           }
-        }, "next": $4}; 
+        }, "next": $4};
         //console.log("hey", @0, @1, @2, @3, @4);
         `
       ],
@@ -174,17 +174,17 @@ export function parse(text: string = "") {
               console.log(data);
           }
           for (var i in array) {
-  
+
           }
           json = {
               hey: "wie"
           }
           //comment
           how_are_you = {
-  
+
           }
       });
-      
+
       for (let item = startPos.line;
           item < activeEditor2.document.lineCount && item < startPos.line + 4 && item <= endPos.line;
           item++
@@ -199,14 +199,14 @@ export function parse(text: string = "") {
           text = text.substring(offset);
           hoverText += text + "\n";
         }
-  
+
       var myCredentials = (process.env.NODE_ENV === "development") ?
           new aws.SharedIniFileCredentials() : // Local environtment ~/.aws/credentials
           new aws.EnvironmentCredentials('aws'); // Lambda provided credentials
   }`);
   } else {
     var ast = parser.parse(text);
-    
+
     function rec(node: any) {
       if (node["object"]){
         // console.log(node["object"]["type"] + ": " + node["object"]["content"]);
